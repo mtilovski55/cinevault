@@ -4,6 +4,7 @@ import MovieCard from "../components/MovieCard";
 
 function Movies() {
     const [movies, setMovies] = useState([]);
+    const [selectedGenre, setSelectedGenre] = useState("All");
 
     useEffect(() => {
         getAllMovies()
@@ -11,11 +12,35 @@ function Movies() {
             .catch((error) => console.log(error));
     }, []);
 
+    const genres = ["All", ...new Set(movies.map((movie) => movie.genre))];
+
+    const filteredMovies =
+        selectedGenre === "All"
+            ? movies
+            : movies.filter((movie) => movie.genre === selectedGenre);
+
     return (
-        <section className="movies-page">
-            <h1>Movie Catalog</h1>
+        <section className="page-container">
+            <h1 className="section-title">Movie Catalog</h1>
+            <p className="section-subtitle">Browse your collection of movies.</p>
+
+            <div className="filter-bar">
+                <label htmlFor="genre">Filter by genre</label>
+                <select
+                    id="genre"
+                    value={selectedGenre}
+                    onChange={(e) => setSelectedGenre(e.target.value)}
+                >
+                    {genres.map((genre) => (
+                        <option key={genre} value={genre}>
+                            {genre}
+                        </option>
+                    ))}
+                </select>
+            </div>
+
             <div className="movie-list">
-                {movies.map((movie) => (
+                {filteredMovies.map((movie) => (
                     <MovieCard key={movie.id} movie={movie} />
                 ))}
             </div>
