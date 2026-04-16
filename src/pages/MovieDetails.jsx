@@ -22,7 +22,14 @@ function MovieDetails() {
 
     return (
         <section className="page-container">
-            <div className="details-layout">
+            <div
+                className="details-layout"
+                style={{
+                    backgroundImage: `url(${movie.imageUrl})`,
+                    backgroundSize: "cover",
+                    backgroundPosition: "center"
+                }}
+            >
                 <img src={movie.imageUrl} alt={movie.title} />
 
                 <div className="details-content">
@@ -33,7 +40,9 @@ function MovieDetails() {
                     <p className="details-description">{movie.description}</p>
 
                     <div className="details-actions">
-                        <Link to="/movies" className="btn-secondary">Back to Catalog</Link>
+                        <Link to="/movies" className="btn-secondary">
+                            Back to Catalog
+                        </Link>
                     </div>
                 </div>
             </div>

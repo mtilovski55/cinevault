@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { createMovie } from "../services/movieService";
+import { useEffect } from "react";
 
 function CreateMovie() {
     const navigate = useNavigate();
@@ -43,6 +44,14 @@ function CreateMovie() {
         await createMovie(newMovie);
         navigate("/movies");
     };
+
+    const user = JSON.parse(localStorage.getItem("user"));
+
+    useEffect(() => {
+        if (!user) {
+            navigate("/login");
+        }
+    }, []);
 
     return (
         <section className="form-wrapper">

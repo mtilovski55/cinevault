@@ -400,3 +400,36 @@ button:disabled {
 .watched-card {
   border-color: #4ade80;
 }
+
+.details-layout {
+  position: relative;
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  padding: 30px;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.details-layout::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right,
+      rgba(0, 0, 0, 0.9) 30%,
+      rgba(0, 0, 0, 0.6));
+  z-index: 0;
+}
+
+.details-layout img {
+  position: relative;
+  z-index: 1;
+  width: 320px;
+  border-radius: 16px;
+}
+
+.details-content {
+  position: relative;
+  z-index: 1;
+}

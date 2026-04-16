@@ -33,8 +33,11 @@ export async function getWatchlist() {
 }
 
 export async function addToWatchlist(movie) {
+    const user = JSON.parse(localStorage.getItem("user"));
+
     const watchlistItem = {
         movieId: movie.id,
+        userId: user.id,
         title: movie.title,
         genre: movie.genre,
         year: movie.year,

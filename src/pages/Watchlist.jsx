@@ -1,15 +1,29 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { getWatchlist } from "../services/movieService";
 import MovieCard from "../components/MovieCard";
 
 function Watchlist() {
     const [watchlistMovies, setWatchlistMovies] = useState([]);
+    const navigate = useNavigate();
 
     useEffect(() => {
+        const user = JSON.parse(localStorage.getItem("user"));
+
+        if (!user) {
+            navigate("/login");
+            return;
+        }
+
         getWatchlist()
-            .then((result) => setWatchlistMovies(result))
+            .then((result) => {
+                const userMovies = result.filter(
+                    (movie) => String(movie.userId) === String(user.id)
+                );
+                setWatchlistMovies(userMovies);
+            })
             .catch((error) => console.log(error));
-    }, []);
+    }, [navigate]);
 
     const removeMovieHandler = (movieId) => {
         setWatchlistMovies((state) =>

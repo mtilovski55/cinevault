@@ -22,9 +22,18 @@ function MovieCard({
             return;
         }
 
+        const user = JSON.parse(localStorage.getItem("user"));
+
+        if (!user) {
+            setIsAdded(false);
+            return;
+        }
+
         getWatchlist().then((list) => {
             const exists = list.some(
-                (item) => String(item.movieId) === String(movie.id)
+                (item) =>
+                    String(item.movieId) === String(movie.id) &&
+                    String(item.userId) === String(user.id)
             );
             setIsAdded(exists);
         });
