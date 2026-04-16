@@ -1,6 +1,14 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Navbar() {
+    const navigate = useNavigate();
+    const user = JSON.parse(localStorage.getItem("user"));
+
+    const logoutHandler = () => {
+        localStorage.removeItem("user");
+        navigate("/");
+    };
+
     return (
         <nav>
             <div className="nav-left">
@@ -11,8 +19,18 @@ function Navbar() {
                 <Link to="/movies">Movies</Link>
                 <Link to="/watchlist">Watchlist</Link>
                 <Link to="/create">Add Movie</Link>
-                <Link to="/login">Login</Link>
-                <Link to="/register" className="btn">Register</Link>
+
+                {user ? (
+                    <>
+                        <span className="nav-user">Hi, {user.email}</span>
+                        <button onClick={logoutHandler} className="btn">Logout</button>
+                    </>
+                ) : (
+                    <>
+                        <Link to="/login">Login</Link>
+                        <Link to="/register" className="btn">Register</Link>
+                    </>
+                )}
             </div>
         </nav>
     );

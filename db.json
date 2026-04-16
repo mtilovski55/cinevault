@@ -1,59 +1,72 @@
 {
-    "movies": [
-        {
-            "id": 1,
-            "title": "Interstellar",
-            "genre": "Sci-Fi",
-            "year": 2014,
-            "imageUrl": "https://image.tmdb.org/t/p/w500/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg",
-            "description": "A team of explorers travels through a wormhole in space in an attempt to ensure humanity's survival.",
-            "rating": 9
-        },
-        {
-            "id": 2,
-            "title": "The Dark Knight",
-            "genre": "Action",
-            "year": 2008,
-            "imageUrl": "https://image.tmdb.org/t/p/w500/qJ2tW6WMUDux911r6m7haRef0WH.jpg",
-            "description": "Batman faces the Joker, a criminal mastermind who wants to plunge Gotham City into chaos.",
-            "rating": 9
-        },
-        {
-            "id": 1,
-            "title": "Interstellar",
-            "genre": "Sci-Fi",
-            "year": 2014,
-            "imageUrl": "https://image.tmdb.org/t/p/w500/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg",
-            "description": "A team of explorers travels through a wormhole in space in an attempt to ensure humanity's survival.",
-            "rating": 9
-        },
-        {
-            "id": 2,
-            "title": "The Dark Knight",
-            "genre": "Action",
-            "year": 2008,
-            "imageUrl": "https://image.tmdb.org/t/p/w500/qJ2tW6WMUDux911r6m7haRef0WH.jpg",
-            "description": "Batman faces the Joker, a criminal mastermind who wants to plunge Gotham City into chaos.",
-            "rating": 9
-        },
-        {
-            "id": 1,
-            "title": "Interstellar",
-            "genre": "Sci-Fi",
-            "year": 2014,
-            "imageUrl": "https://image.tmdb.org/t/p/w500/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg",
-            "description": "A team of explorers travels through a wormhole in space in an attempt to ensure humanity's survival.",
-            "rating": 9
-        },
-        {
-            "id": 2,
-            "title": "The Dark Knight",
-            "genre": "Action",
-            "year": 2008,
-            "imageUrl": "https://image.tmdb.org/t/p/w500/qJ2tW6WMUDux911r6m7haRef0WH.jpg",
-            "description": "Batman faces the Joker, a criminal mastermind who wants to plunge Gotham City into chaos.",
-            "rating": 9
-        }
-    ],
-    "watchlist": []
+  "movies": [
+    {
+      "id": "1",
+      "title": "Interstellar",
+      "genre": "Sci-Fi",
+      "year": 2014,
+      "imageUrl": "https://image.tmdb.org/t/p/w500/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg",
+      "description": "A team of explorers travels through a wormhole in space in an attempt to ensure humanity's survival.",
+      "rating": 9
+    },
+    {
+      "id": "2",
+      "title": "The Dark Knight",
+      "genre": "Action",
+      "year": 2008,
+      "imageUrl": "https://image.tmdb.org/t/p/w500/qJ2tW6WMUDux911r6m7haRef0WH.jpg",
+      "description": "Batman faces the Joker, a criminal mastermind who wants to plunge Gotham City into chaos.",
+      "rating": 9
+    },
+    {
+      "id": "1",
+      "title": "Interstellar",
+      "genre": "Sci-Fi",
+      "year": 2014,
+      "imageUrl": "https://image.tmdb.org/t/p/w500/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg",
+      "description": "A team of explorers travels through a wormhole in space in an attempt to ensure humanity's survival.",
+      "rating": 9
+    },
+    {
+      "id": "2",
+      "title": "The Dark Knight",
+      "genre": "Action",
+      "year": 2008,
+      "imageUrl": "https://image.tmdb.org/t/p/w500/qJ2tW6WMUDux911r6m7haRef0WH.jpg",
+      "description": "Batman faces the Joker, a criminal mastermind who wants to plunge Gotham City into chaos.",
+      "rating": 9
+    },
+    {
+      "id": "1",
+      "title": "Interstellar",
+      "genre": "Sci-Fi",
+      "year": 2014,
+      "imageUrl": "https://image.tmdb.org/t/p/w500/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg",
+      "description": "A team of explorers travels through a wormhole in space in an attempt to ensure humanity's survival.",
+      "rating": 9
+    },
+    {
+      "id": "2",
+      "title": "The Dark Knight",
+      "genre": "Action",
+      "year": 2008,
+      "imageUrl": "https://image.tmdb.org/t/p/w500/qJ2tW6WMUDux911r6m7haRef0WH.jpg",
+      "description": "Batman faces the Joker, a criminal mastermind who wants to plunge Gotham City into chaos.",
+      "rating": 9
+    }
+  ],
+  "watchlist": [],
+  "users": [
+    {
+      "email": "matejtilovski@gmail.com",
+      "password": "12345",
+      "id": "u-mfXQq8sLY"
+    },
+    {
+      "email": "even@gmail.com",
+      "password": "12345",
+      "id": "Rv4-aayfm0w"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }
