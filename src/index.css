@@ -520,3 +520,43 @@ textarea,
 select {
   transition: 0.2s ease;
 }
+
+.home-features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
+  margin: 30px 0 60px;
+}
+
+.feature-card {
+  background: #171717;
+  border: 1px solid #2a2a2a;
+  border-radius: 18px;
+  padding: 24px;
+}
+
+.feature-card h3 {
+  margin-top: 0;
+  margin-bottom: 12px;
+  font-size: 22px;
+}
+
+.feature-card p {
+  margin: 0;
+  color: #b3b3b3;
+  line-height: 1.6;
+}
+
+.home-section {
+  margin-top: 30px;
+}
+
+.home-section h2 {
+  margin-bottom: 8px;
+  font-size: 32px;
+}
+
+.home-section p {
+  margin-bottom: 24px;
+  color: #b3b3b3;
+}
