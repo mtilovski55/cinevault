@@ -5,3 +5,9 @@ export async function getAllMovies() {
     const data = await response.json();
     return data;
 }
+
+export async function getOneMovie(movieId) {
+    const response = await fetch(`${baseUrl}/${movieId}`);
+    const data = await response.json();
+    return data;
+}
