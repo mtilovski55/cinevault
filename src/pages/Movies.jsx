@@ -12,12 +12,23 @@ function Movies() {
             .catch((error) => console.log(error));
     }, []);
 
-    const genres = ["All", ...new Set(movies.map((movie) => movie.genre))];
+    const genres = [
+        "All",
+        ...new Set(
+            movies.flatMap((movie) =>
+                movie.genre.split(",").map((g) => g.trim())
+            )
+        )
+    ];
 
-    const filteredMovies =
-        selectedGenre === "All"
-            ? movies
-            : movies.filter((movie) => movie.genre === selectedGenre);
+    const filteredMovies = movies.filter((movie) => {
+        if (selectedGenre === "All") return true;
+
+        return movie.genre
+            .split(",")
+            .map((g) => g.trim())
+            .includes(selectedGenre);
+    });
 
     return (
         <section className="page-container">
@@ -42,7 +53,12 @@ function Movies() {
             <div className="movie-list">
                 {filteredMovies.length > 0 ? (
                     filteredMovies.map((movie) => (
-                        <MovieCard key={movie.id} movie={movie} />
+                        <MovieCard
+                            key={movie.id}
+                            movie={movie}
+                            onGenreClick={setSelectedGenre}
+                            selectedGenre={selectedGenre}
+                        />
                     ))
                 ) : (
                     <div className="empty-state">
