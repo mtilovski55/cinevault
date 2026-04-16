@@ -462,11 +462,23 @@ button:disabled {
 }
 
 .details-layout {
-  min-height: 520px;
+  position: relative;
 }
 
-.details-content h1 {
-  line-height: 1.1;
+.details-layout::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right,
+      rgba(0, 0, 0, 0.85) 20%,
+      rgba(0, 0, 0, 0.6) 50%,
+      rgba(0, 0, 0, 0.2) 100%);
+  border-radius: inherit;
+}
+
+.details-content {
+  position: relative;
+  z-index: 2;
 }
 
 .details-meta {
@@ -503,6 +515,17 @@ button:disabled {
   background: rgba(255, 255, 255, 0.08);
   color: #ccc;
   border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.details-genre {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.094);
+  font-size: 12px;
+  font-weight: 500;
+  margin-bottom: 10px;
+  margin-right: 8px;
 }
 
 .details-pill {
@@ -744,4 +767,29 @@ select {
 
 .genre-tag-selected {
   transform: scale(1.05);
+}
+
+.page-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.back-btn {
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #ccc;
+
+  backdrop-filter: blur(6px);
+
+  padding: 10px 16px;
+  border-radius: 10px;
+
+  font-weight: 500;
+}
+
+.back-btn:hover {
+  background-color: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  transform: translateY(-1px);
 }

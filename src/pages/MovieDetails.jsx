@@ -33,7 +33,13 @@ function MovieDetails() {
                 <img src={movie.imageUrl} alt={movie.title} />
 
                 <div className="details-content">
-                    <p className="details-tag">{movie.genre}</p>
+                    <div>
+                        {movie.genre.split(",").map((g, i) => (
+                            <span key={i} className="details-genre">
+                                {g.trim()}
+                            </span>
+                        ))}
+                    </div>
                     <h1>{movie.title}</h1>
 
                     <div className="details-meta">
@@ -44,7 +50,7 @@ function MovieDetails() {
                     <p className="details-description">{movie.description}</p>
 
                     <div className="details-actions">
-                        <Link to="/movies" className="btn-secondary">
+                        <Link to="/movies" className="btn-secondary back-btn">
                             Back to Catalog
                         </Link>
                     </div>
