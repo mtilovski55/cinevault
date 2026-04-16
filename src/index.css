@@ -340,3 +340,21 @@ nav a:hover {
   margin-top: 24px;
   flex-wrap: wrap;
 }
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-left .logo {
+  font-size: 22px;
+  font-weight: 700;
+  color: #e50914;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
