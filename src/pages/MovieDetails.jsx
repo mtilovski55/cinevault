@@ -37,8 +37,8 @@ function MovieDetails() {
                     <h1>{movie.title}</h1>
 
                     <div className="details-meta">
-                        <span className="details-pill">{movie.year}</span>
-                        <span className="details-pill">⭐ {movie.rating}/10</span>
+                        <span className="year-badge">{movie.year}</span>
+                        <span className="rating-badge">⭐ {movie.rating}/10</span>
                     </div>
 
                     <p className="details-description">{movie.description}</p>

@@ -471,9 +471,38 @@ button:disabled {
 
 .details-meta {
   display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-  margin-bottom: 18px;
+  align-items: center;
+  gap: 10px;
+  margin: 10px 0;
+}
+
+.year-badge,
+.rating-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 26px;
+  padding: 0 10px;
+
+  font-size: 12px;
+  line-height: 1;
+
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.rating-badge {
+  background: rgba(234, 179, 8, 0.15);
+  color: #eab308;
+  border: 1px solid #eab308;
+  box-shadow: 0 0 10px rgba(234, 179, 8, 0.25);
+}
+
+.year-badge {
+  background: rgba(255, 255, 255, 0.08);
+  color: #ccc;
+  border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 .details-pill {
