@@ -49,6 +49,7 @@ function Login() {
                             type="email"
                             id="email"
                             name="email"
+                            placeholder="Enter your email"
                             value={formValues.email}
                             onChange={changeHandler}
                         />
@@ -60,6 +61,7 @@ function Login() {
                             type="password"
                             id="password"
                             name="password"
+                            placeholder="Enter your password"
                             value={formValues.password}
                             onChange={changeHandler}
                         />

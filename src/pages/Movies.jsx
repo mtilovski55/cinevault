@@ -40,9 +40,16 @@ function Movies() {
             </div>
 
             <div className="movie-list">
-                {filteredMovies.map((movie) => (
-                    <MovieCard key={movie.id} movie={movie} />
-                ))}
+                {filteredMovies.length > 0 ? (
+                    filteredMovies.map((movie) => (
+                        <MovieCard key={movie.id} movie={movie} />
+                    ))
+                ) : (
+                    <div className="empty-state">
+                        <h2>No movies found</h2>
+                        <p>Try selecting another genre or add a new movie to the catalog.</p>
+                    </div>
+                )}
             </div>
         </section>
     );

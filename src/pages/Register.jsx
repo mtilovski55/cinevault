@@ -58,6 +58,7 @@ function Register() {
                             type="email"
                             id="email"
                             name="email"
+                            placeholder="Enter your email"
                             value={formValues.email}
                             onChange={changeHandler}
                         />
@@ -69,6 +70,7 @@ function Register() {
                             type="password"
                             id="password"
                             name="password"
+                            placeholder="Create a password"
                             value={formValues.password}
                             onChange={changeHandler}
                         />
@@ -80,6 +82,7 @@ function Register() {
                             type="password"
                             id="repeatPassword"
                             name="repeatPassword"
+                            placeholder="Repeat your password"
                             value={formValues.repeatPassword}
                             onChange={changeHandler}
                         />

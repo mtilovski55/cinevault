@@ -58,7 +58,10 @@ function Watchlist() {
                         />
                     ))
                 ) : (
-                    <p>Your watchlist is empty.</p>
+                    <div className="empty-state">
+                        <h2>Your watchlist is empty</h2>
+                        <p>Start adding movies and build your personal collection.</p>
+                    </div>
                 )}
             </div>
         </section>

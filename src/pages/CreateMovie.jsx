@@ -64,6 +64,7 @@ function CreateMovie() {
                             type="text"
                             id="title"
                             name="title"
+                            placeholder="Enter movie title"
                             value={formValues.title}
                             onChange={changeHandler}
                         />
@@ -75,6 +76,7 @@ function CreateMovie() {
                             type="text"
                             id="genre"
                             name="genre"
+                            placeholder="e.g. Action, Sci-Fi, Drama"
                             value={formValues.genre}
                             onChange={changeHandler}
                         />
@@ -86,6 +88,7 @@ function CreateMovie() {
                             type="number"
                             id="year"
                             name="year"
+                            placeholder="e.g. 2026"
                             value={formValues.year}
                             onChange={changeHandler}
                         />
@@ -97,6 +100,7 @@ function CreateMovie() {
                             type="text"
                             id="imageUrl"
                             name="imageUrl"
+                            placeholder="Paste poster image URL"
                             value={formValues.imageUrl}
                             onChange={changeHandler}
                         />
@@ -107,6 +111,7 @@ function CreateMovie() {
                         <textarea
                             id="description"
                             name="description"
+                            placeholder="Write a short description of the movie"
                             value={formValues.description}
                             onChange={changeHandler}
                         />
@@ -120,6 +125,7 @@ function CreateMovie() {
                             name="rating"
                             min="1"
                             max="10"
+                            placeholder="Rate from 1 to 10"
                             value={formValues.rating}
                             onChange={changeHandler}
                         />

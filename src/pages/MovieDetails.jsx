@@ -35,8 +35,12 @@ function MovieDetails() {
                 <div className="details-content">
                     <p className="details-tag">{movie.genre}</p>
                     <h1>{movie.title}</h1>
-                    <p><strong>Year:</strong> {movie.year}</p>
-                    <p><strong>Rating:</strong> ⭐ {movie.rating}/10</p>
+
+                    <div className="details-meta">
+                        <span className="details-pill">{movie.year}</span>
+                        <span className="details-pill">⭐ {movie.rating}/10</span>
+                    </div>
+
                     <p className="details-description">{movie.description}</p>
 
                     <div className="details-actions">
