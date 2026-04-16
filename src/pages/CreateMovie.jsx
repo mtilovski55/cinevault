@@ -1,10 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { createMovie } from "../services/movieService";
-import { useEffect } from "react";
 
 function CreateMovie() {
     const navigate = useNavigate();
+    const user = JSON.parse(localStorage.getItem("user"));
 
     const [formValues, setFormValues] = useState({
         title: "",
@@ -14,6 +14,12 @@ function CreateMovie() {
         description: "",
         rating: ""
     });
+
+    useEffect(() => {
+        if (!user) {
+            navigate("/login");
+        }
+    }, [user, navigate]);
 
     const changeHandler = (e) => {
         setFormValues((state) => ({
@@ -44,14 +50,6 @@ function CreateMovie() {
         await createMovie(newMovie);
         navigate("/movies");
     };
-
-    const user = JSON.parse(localStorage.getItem("user"));
-
-    useEffect(() => {
-        if (!user) {
-            navigate("/login");
-        }
-    }, []);
 
     return (
         <section className="form-wrapper">

@@ -35,6 +35,19 @@ export async function getWatchlist() {
 export async function addToWatchlist(movie) {
     const user = JSON.parse(localStorage.getItem("user"));
 
+    const existingResponse = await fetch(watchlistUrl);
+    const existingItems = await existingResponse.json();
+
+    const alreadyAdded = existingItems.some(
+        (item) =>
+            String(item.movieId) === String(movie.id) &&
+            String(item.userId) === String(user.id)
+    );
+
+    if (alreadyAdded) {
+        return null;
+    }
+
     const watchlistItem = {
         movieId: movie.id,
         userId: user.id,

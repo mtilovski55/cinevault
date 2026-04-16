@@ -45,8 +45,11 @@ function MovieCard({
             return;
         }
 
-        await addToWatchlist(movie);
-        setIsAdded(true);
+        const result = await addToWatchlist(movie);
+
+        if (result) {
+            setIsAdded(true);
+        }
     };
 
     const removeHandler = async () => {
