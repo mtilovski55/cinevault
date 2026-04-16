@@ -5,6 +5,7 @@ import MovieCard from "../components/MovieCard";
 function Movies() {
     const [movies, setMovies] = useState([]);
     const [selectedGenre, setSelectedGenre] = useState("All");
+    const [searchTerm, setSearchTerm] = useState("");
 
     useEffect(() => {
         getAllMovies()
@@ -22,12 +23,18 @@ function Movies() {
     ];
 
     const filteredMovies = movies.filter((movie) => {
-        if (selectedGenre === "All") return true;
+        const matchesGenre =
+            selectedGenre === "All" ||
+            movie.genre
+                .split(",")
+                .map((g) => g.trim())
+                .includes(selectedGenre);
 
-        return movie.genre
-            .split(",")
-            .map((g) => g.trim())
-            .includes(selectedGenre);
+        const matchesSearch = movie.title
+            .toLowerCase()
+            .includes(searchTerm.toLowerCase());
+
+        return matchesGenre && matchesSearch;
     });
 
     return (
@@ -35,19 +42,30 @@ function Movies() {
             <h1 className="section-title">Movie Catalog</h1>
             <p className="section-subtitle">Browse your collection of movies.</p>
 
-            <div className="filter-bar">
-                <label htmlFor="genre">Filter by genre</label>
-                <select
-                    id="genre"
-                    value={selectedGenre}
-                    onChange={(e) => setSelectedGenre(e.target.value)}
-                >
-                    {genres.map((genre) => (
-                        <option key={genre} value={genre}>
-                            {genre}
-                        </option>
-                    ))}
-                </select>
+            <div className="catalog-controls">
+                <div className="filter-bar">
+                    <label htmlFor="genre">Filter by genre</label>
+                    <select
+                        id="genre"
+                        value={selectedGenre}
+                        onChange={(e) => setSelectedGenre(e.target.value)}
+                    >
+                        {genres.map((genre) => (
+                            <option key={genre} value={genre}>
+                                {genre}
+                            </option>
+                        ))}
+                    </select>
+                </div>
+
+                <div className="search-bar">
+                    <input
+                        type="text"
+                        placeholder="Search movies by title..."
+                        value={searchTerm}
+                        onChange={(e) => setSearchTerm(e.target.value)}
+                    />
+                </div>
             </div>
 
             <div className="movie-list">
@@ -63,7 +81,7 @@ function Movies() {
                 ) : (
                     <div className="empty-state">
                         <h2>No movies found</h2>
-                        <p>Try selecting another genre or add a new movie to the catalog.</p>
+                        <p>Try a different title or genre filter.</p>
                     </div>
                 )}
             </div>
