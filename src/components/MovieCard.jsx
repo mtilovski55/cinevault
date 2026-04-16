@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
     addToWatchlist,
     getWatchlist,
@@ -16,13 +16,13 @@ function MovieCard({
     onWatchedToggle
 }) {
     const [isAdded, setIsAdded] = useState(false);
+    const navigate = useNavigate();
+    const user = JSON.parse(localStorage.getItem("user"));
 
     useEffect(() => {
         if (!showWatchlistButton) {
             return;
         }
-
-        const user = JSON.parse(localStorage.getItem("user"));
 
         if (!user) {
             setIsAdded(false);
@@ -37,9 +37,14 @@ function MovieCard({
             );
             setIsAdded(exists);
         });
-    }, [movie.id, showWatchlistButton]);
+    }, [movie.id, showWatchlistButton, user]);
 
     const addHandler = async () => {
+        if (!user) {
+            navigate("/login");
+            return;
+        }
+
         await addToWatchlist(movie);
         setIsAdded(true);
     };
@@ -74,13 +79,19 @@ function MovieCard({
                 <Link to={`/movies/${movie.movieId || movie.id}`}>Details</Link>
 
                 {showWatchlistButton &&
-                    (isAdded ? (
-                        <button className="btn-secondary" disabled>
-                            Added ✓
-                        </button>
+                    (user ? (
+                        isAdded ? (
+                            <button className="btn-secondary" disabled>
+                                Added ✓
+                            </button>
+                        ) : (
+                            <button onClick={addHandler} className="btn-secondary">
+                                Add to Watchlist
+                            </button>
+                        )
                     ) : (
                         <button onClick={addHandler} className="btn-secondary">
-                            Add to Watchlist
+                            Login to Save
                         </button>
                     ))}
 
