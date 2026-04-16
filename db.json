@@ -19,43 +19,48 @@
       "rating": 9
     },
     {
-      "id": "1",
-      "title": "Interstellar",
-      "genre": "Sci-Fi",
-      "year": 2014,
-      "imageUrl": "https://image.tmdb.org/t/p/w500/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg",
-      "description": "A team of explorers travels through a wormhole in space in an attempt to ensure humanity's survival.",
-      "rating": 9
-    },
-    {
-      "id": "2",
-      "title": "The Dark Knight",
+      "title": "Infinity War",
       "genre": "Action",
-      "year": 2008,
-      "imageUrl": "https://image.tmdb.org/t/p/w500/qJ2tW6WMUDux911r6m7haRef0WH.jpg",
-      "description": "Batman faces the Joker, a criminal mastermind who wants to plunge Gotham City into chaos.",
-      "rating": 9
+      "year": 2018,
+      "imageUrl": "https://m.media-amazon.com/images/M/MV5BMjMxNjY2MDU1OV5BMl5BanBnXkFtZTgwNzY1MTUwNTM@._V1_.jpg",
+      "description": "As Thanos sets about his quest for finding the infinity stones and carrying out his twisted scheme, the Avengers join forces with their allies to stop him from causing chaos and destruction.",
+      "rating": 9,
+      "id": "UpdC_I8TCuc"
     },
     {
-      "id": "1",
-      "title": "Interstellar",
+      "title": "Endgame",
       "genre": "Sci-Fi",
-      "year": 2014,
-      "imageUrl": "https://image.tmdb.org/t/p/w500/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg",
-      "description": "A team of explorers travels through a wormhole in space in an attempt to ensure humanity's survival.",
-      "rating": 9
-    },
-    {
-      "id": "2",
-      "title": "The Dark Knight",
-      "genre": "Action",
-      "year": 2008,
-      "imageUrl": "https://image.tmdb.org/t/p/w500/qJ2tW6WMUDux911r6m7haRef0WH.jpg",
-      "description": "Batman faces the Joker, a criminal mastermind who wants to plunge Gotham City into chaos.",
-      "rating": 9
+      "year": 2019,
+      "imageUrl": "https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_FMjpg_UX1000_.jpg",
+      "description": "After Thanos, an intergalactic warlord, disintegrates half of the universe, the Avengers must reunite and assemble again to reinvigorate their trounced allies and restore balance.",
+      "rating": 9,
+      "id": "hlteYiFi1RU"
     }
   ],
-  "watchlist": [],
+  "watchlist": [
+    {
+      "movieId": "UpdC_I8TCuc",
+      "title": "Infinity War",
+      "genre": "Action",
+      "year": 2018,
+      "imageUrl": "https://m.media-amazon.com/images/M/MV5BMjMxNjY2MDU1OV5BMl5BanBnXkFtZTgwNzY1MTUwNTM@._V1_.jpg",
+      "description": "As Thanos sets about his quest for finding the infinity stones and carrying out his twisted scheme, the Avengers join forces with their allies to stop him from causing chaos and destruction.",
+      "rating": 9,
+      "watched": true,
+      "id": "Jgb1cE8DYoo"
+    },
+    {
+      "movieId": "hlteYiFi1RU",
+      "title": "Endgame",
+      "genre": "Sci-Fi",
+      "year": 2019,
+      "imageUrl": "https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_FMjpg_UX1000_.jpg",
+      "description": "After Thanos, an intergalactic warlord, disintegrates half of the universe, the Avengers must reunite and assemble again to reinvigorate their trounced allies and restore balance.",
+      "rating": 9,
+      "watched": true,
+      "id": "-pADfIGX_Tw"
+    }
+  ],
   "users": [
     {
       "email": "matejtilovski@gmail.com",
