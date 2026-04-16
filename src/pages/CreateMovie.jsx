@@ -15,6 +15,10 @@ function CreateMovie() {
         rating: ""
     });
 
+    const [errors, setErrors] = useState({});
+    const [shakeTrigger, setShakeTrigger] = useState(0);
+    const [successMessage, setSuccessMessage] = useState("");
+
     useEffect(() => {
         if (!user) {
             navigate("/login");
@@ -26,29 +30,46 @@ function CreateMovie() {
             ...state,
             [e.target.name]: e.target.value
         }));
+
+        setErrors((state) => ({
+            ...state,
+            [e.target.name]: ""
+        }));
     };
 
     const submitHandler = async (e) => {
         e.preventDefault();
 
-        const { title, genre, year, imageUrl, description, rating } = formValues;
+        const newErrors = {};
 
-        if (!title || !genre || !year || !imageUrl || !description || !rating) {
-            alert("All fields are required.");
+        if (!formValues.title) newErrors.title = "Title is required";
+        if (!formValues.genre) newErrors.genre = "Genre is required";
+        if (!formValues.year) newErrors.year = "Year is required";
+        if (!formValues.imageUrl) newErrors.imageUrl = "Image URL is required";
+        if (!formValues.description) newErrors.description = "Description is required";
+        if (!formValues.rating) newErrors.rating = "Rating is required";
+
+        if (Object.keys(newErrors).length > 0) {
+            setErrors(newErrors);
+            setShakeTrigger((prev) => prev + 1);
             return;
         }
 
-        const newMovie = {
-            title,
-            genre,
-            year: Number(year),
-            imageUrl,
-            description,
-            rating: Number(rating)
-        };
+        await createMovie({
+            ...formValues,
+            year: Number(formValues.year),
+            rating: Number(formValues.rating)
+        });
 
-        await createMovie(newMovie);
-        navigate("/movies");
+        setSuccessMessage("Movie added successfully!");
+
+        setTimeout(() => {
+            navigate("/movies");
+        }, 1200);
+    };
+
+    const getInputClass = (field) => {
+        return `${errors[field] ? "input-error" : ""} ${errors[field] ? "shake" : ""}`;
     };
 
     return (
@@ -59,79 +80,128 @@ function CreateMovie() {
 
                 <form onSubmit={submitHandler}>
                     <div className="form-group">
-                        <label htmlFor="title">Title</label>
+                        <label>Title</label>
                         <input
+                            key={`title-${shakeTrigger}`}
                             type="text"
-                            id="title"
                             name="title"
                             placeholder="Enter movie title"
                             value={formValues.title}
                             onChange={changeHandler}
+                            className={getInputClass("title")}
                         />
+                        {errors.title && (
+                            <div className="field-error">
+                                <span className="field-error-icon">!</span>
+                                <span>{errors.title}</span>
+                            </div>
+                        )}
                     </div>
 
                     <div className="form-group">
-                        <label htmlFor="genre">Genre</label>
+                        <label>Genre</label>
                         <input
+                            key={`genre-${shakeTrigger}`}
                             type="text"
-                            id="genre"
                             name="genre"
-                            placeholder="e.g. Action, Sci-Fi, Drama"
+                            placeholder="e.g. Action, Sci-Fi"
                             value={formValues.genre}
                             onChange={changeHandler}
+                            className={getInputClass("genre")}
                         />
+                        {errors.genre && (
+                            <div className="field-error">
+                                <span className="field-error-icon">!</span>
+                                <span>{errors.genre}</span>
+                            </div>
+                        )}
                     </div>
 
                     <div className="form-group">
-                        <label htmlFor="year">Year</label>
+                        <label>Year</label>
                         <input
+                            key={`year-${shakeTrigger}`}
                             type="number"
-                            id="year"
                             name="year"
-                            placeholder="e.g. 2026"
+                            placeholder="e.g. 2024"
                             value={formValues.year}
                             onChange={changeHandler}
+                            className={getInputClass("year")}
                         />
+                        {errors.year && (
+                            <div className="field-error">
+                                <span className="field-error-icon">!</span>
+                                <span>{errors.year}</span>
+                            </div>
+                        )}
                     </div>
 
                     <div className="form-group">
-                        <label htmlFor="imageUrl">Image URL</label>
+                        <label>Image URL</label>
                         <input
+                            key={`image-${shakeTrigger}`}
                             type="text"
-                            id="imageUrl"
                             name="imageUrl"
-                            placeholder="Paste poster image URL"
+                            placeholder="Paste poster URL"
                             value={formValues.imageUrl}
                             onChange={changeHandler}
+                            className={getInputClass("imageUrl")}
                         />
+                        {errors.imageUrl && (
+                            <div className="field-error">
+                                <span className="field-error-icon">!</span>
+                                <span>{errors.imageUrl}</span>
+                            </div>
+                        )}
                     </div>
 
                     <div className="form-group">
-                        <label htmlFor="description">Description</label>
+                        <label>Description</label>
                         <textarea
-                            id="description"
+                            key={`description-${shakeTrigger}`}
                             name="description"
-                            placeholder="Write a short description of the movie"
+                            placeholder="Short description"
                             value={formValues.description}
                             onChange={changeHandler}
+                            className={getInputClass("description")}
                         />
+                        {errors.description && (
+                            <div className="field-error">
+                                <span className="field-error-icon">!</span>
+                                <span>{errors.description}</span>
+                            </div>
+                        )}
                     </div>
 
                     <div className="form-group">
-                        <label htmlFor="rating">Rating</label>
+                        <label>Rating</label>
                         <input
+                            key={`rating-${shakeTrigger}`}
                             type="number"
-                            id="rating"
                             name="rating"
+                            placeholder="1-10"
                             min="1"
                             max="10"
-                            placeholder="Rate from 1 to 10"
                             value={formValues.rating}
                             onChange={changeHandler}
+                            className={getInputClass("rating")}
                         />
+                        {errors.rating && (
+                            <div className="field-error">
+                                <span className="field-error-icon">!</span>
+                                <span>{errors.rating}</span>
+                            </div>
+                        )}
                     </div>
 
-                    <button type="submit" className="btn">Add Movie</button>
+                    {successMessage && (
+                        <div className="success-message">
+                            <span className="success-icon">✓</span>
+                            <span>{successMessage}</span>
+                        </div>
+                    )}
+
+                    <button className="btn">Add Movie</button>
                 </form>
             </div>
         </section>

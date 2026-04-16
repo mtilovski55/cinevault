@@ -35,6 +35,15 @@
       "description": "After Thanos, an intergalactic warlord, disintegrates half of the universe, the Avengers must reunite and assemble again to reinvigorate their trounced allies and restore balance.",
       "rating": 9,
       "id": "hlteYiFi1RU"
+    },
+    {
+      "title": "Spider-Man: No Way Home",
+      "genre": "Action, Sci-Fi",
+      "year": 2021,
+      "imageUrl": "https://m.media-amazon.com/images/M/MV5BMmFiZGZjMmEtMTA0Ni00MzA2LTljMTYtZGI2MGJmZWYzZTQ2XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+      "description": "Spider-Man seeks the help of Doctor Strange to forget his exposed secret identity as Peter Parker. However, Strange's spell goes horribly wrong, leading to unwanted guests entering their universe.",
+      "rating": 8,
+      "id": "RnH9iMUsiog"
     }
   ],
   "watchlist": [
@@ -85,6 +94,18 @@
       "rating": 9,
       "watched": false,
       "id": "-VmLmYHpALw"
+    },
+    {
+      "movieId": "RnH9iMUsiog",
+      "userId": "u-mfXQq8sLY",
+      "title": "Spider-Man: No Way Home",
+      "genre": "Action, Sci-Fi",
+      "year": 2021,
+      "imageUrl": "https://m.media-amazon.com/images/M/MV5BMmFiZGZjMmEtMTA0Ni00MzA2LTljMTYtZGI2MGJmZWYzZTQ2XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+      "description": "Spider-Man seeks the help of Doctor Strange to forget his exposed secret identity as Peter Parker. However, Strange's spell goes horribly wrong, leading to unwanted guests entering their universe.",
+      "rating": 8,
+      "watched": true,
+      "id": "eKaedzDhFAM"
     }
   ],
   "users": [
