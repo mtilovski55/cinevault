@@ -24,15 +24,12 @@ function Profile() {
             .then((movies) => setMovieCount(movies.length))
             .catch((error) => console.log(error));
 
-        getWatchlist()
-            .then((items) => {
-                const userItems = items.filter(
-                    (item) => String(item.userId) === String(user.id)
-                );
-
-                setWatchlistCount(userItems.length);
-                setWatchedCount(userItems.filter((item) => item.watched).length);
-            })
+        getWatchlist().then((items) => {
+            setWatchlistCount(items.length);
+            setWatchedCount(
+                items.filter((item) => item.movie?.watched).length
+            );
+        })
             .catch((error) => console.log(error));
     }, [user, navigate]);
 

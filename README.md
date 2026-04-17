@@ -24,8 +24,7 @@ A modern movie catalog web app built with React + Vite.
   npm install
   npm run dev
 
-🧪 Backend (JSON Server)
-  npx json-server --watch db.json --port 3001
+🧪 Backend (Render)
 
 <img width="2032" height="1095" alt="image" src="https://github.com/user-attachments/assets/aebce920-080f-46db-aa47-ee163284f0fc" />
 <img width="2032" height="1095" alt="image" src="https://github.com/user-attachments/assets/8b1fd260-6e92-47f5-9fd2-7d721a92dfa9" />
