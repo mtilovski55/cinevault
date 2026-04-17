@@ -6,6 +6,7 @@ function Movies() {
     const [movies, setMovies] = useState([]);
     const [selectedGenre, setSelectedGenre] = useState("All");
     const [searchTerm, setSearchTerm] = useState("");
+    const [sortBy, setSortBy] = useState("default");
 
     useEffect(() => {
         getAllMovies()
@@ -22,20 +23,48 @@ function Movies() {
         )
     ];
 
-    const filteredMovies = movies.filter((movie) => {
-        const matchesGenre =
-            selectedGenre === "All" ||
-            movie.genre
-                .split(",")
-                .map((g) => g.trim())
-                .includes(selectedGenre);
+    const filteredMovies = movies
+        .filter((movie) => {
+            const matchesGenre =
+                selectedGenre === "All" ||
+                movie.genre
+                    .split(",")
+                    .map((g) => g.trim())
+                    .includes(selectedGenre);
 
-        const matchesSearch = movie.title
-            .toLowerCase()
-            .includes(searchTerm.toLowerCase());
+            const matchesSearch = movie.title
+                .toLowerCase()
+                .includes(searchTerm.toLowerCase());
 
-        return matchesGenre && matchesSearch;
-    });
+            return matchesGenre && matchesSearch;
+        })
+        .sort((a, b) => {
+            if (sortBy === "title-asc") {
+                return a.title.localeCompare(b.title);
+            }
+
+            if (sortBy === "title-desc") {
+                return b.title.localeCompare(a.title);
+            }
+
+            if (sortBy === "year-newest") {
+                return b.year - a.year;
+            }
+
+            if (sortBy === "year-oldest") {
+                return a.year - b.year;
+            }
+
+            if (sortBy === "rating-high") {
+                return b.rating - a.rating;
+            }
+
+            if (sortBy === "rating-low") {
+                return a.rating - b.rating;
+            }
+
+            return 0;
+        });
 
     return (
         <section className="page-container">
@@ -58,6 +87,23 @@ function Movies() {
                                 {genre}
                             </option>
                         ))}
+                    </select>
+                </div>
+
+                <div className="sort-bar">
+                    <label htmlFor="sort">Sort by</label>
+                    <select
+                        id="sort"
+                        value={sortBy}
+                        onChange={(e) => setSortBy(e.target.value)}
+                    >
+                        <option value="default">Default</option>
+                        <option value="title-asc">Title A-Z</option>
+                        <option value="title-desc">Title Z-A</option>
+                        <option value="year-newest">Newest Year</option>
+                        <option value="year-oldest">Oldest Year</option>
+                        <option value="rating-high">Highest Rating</option>
+                        <option value="rating-low">Lowest Rating</option>
                     </select>
                 </div>
 

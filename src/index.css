@@ -941,3 +941,31 @@ select {
   font-weight: 700;
   color: white;
 }
+
+.sort-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.sort-bar label {
+  font-weight: 600;
+  color: #d1d1d1;
+  white-space: nowrap;
+}
+
+.sort-bar select {
+  background-color: #111;
+  color: white;
+  border: 1px solid #2e2e2e;
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 15px;
+}
+
+.sort-bar select:focus {
+  outline: none;
+  border-color: #e50914;
+  box-shadow: 0 0 0 2px rgba(229, 9, 20, 0.08);
+}
