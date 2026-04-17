@@ -1,5 +1,57 @@
 const API_URL = "https://cinevault-x99x.onrender.com";
 
+export async function getAllMovies() {
+    const response = await fetch(`${API_URL}/movies`);
+
+    if (!response.ok) {
+        throw new Error("Failed to fetch movies");
+    }
+
+    return response.json();
+}
+
+export async function getOneMovie(id) {
+    const response = await fetch(`${API_URL}/movies/${id}`);
+
+    if (!response.ok) {
+        throw new Error("Failed to fetch movie");
+    }
+
+    return response.json();
+}
+
+export async function createMovie(movieData) {
+    const response = await fetch(`${API_URL}/movies`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(movieData),
+    });
+
+    if (!response.ok) {
+        throw new Error("Failed to create movie");
+    }
+
+    return response.json();
+}
+
+export async function markAsWatched(movieId, watched) {
+    const response = await fetch(`${API_URL}/movies/${movieId}`, {
+        method: "PATCH",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ watched }),
+    });
+
+    if (!response.ok) {
+        throw new Error("Failed to update watched status");
+    }
+
+    return response.json();
+}
+
 export async function getWatchlist() {
     const storedUser = localStorage.getItem("user");
     const user =
