@@ -1,35 +1,43 @@
-const moviesUrl = "http://localhost:3001/movies";
-const watchlistUrl = "http://localhost:3001/watchlist";
+const API_URL = "https://cinevault-x99x.onrender.com";
 
 export async function getAllMovies() {
-    const response = await fetch(moviesUrl);
-    const data = await response.json();
-    return data;
-}
-
-export async function getOneMovie(movieId) {
-    const response = await fetch(`${moviesUrl}/${movieId}`);
-    const data = await response.json();
-    return data;
+    const response = await fetch(`${API_URL}/movies`);
+    if (!response.ok) {
+        throw new Error("Failed to fetch movies");
+    }
+    return response.json();
 }
 
 export async function createMovie(movieData) {
-    const response = await fetch(moviesUrl, {
+    const response = await fetch(`${API_URL}/movies`, {
         method: "POST",
         headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
         },
-        body: JSON.stringify(movieData)
+        body: JSON.stringify(movieData),
     });
 
-    const data = await response.json();
-    return data;
+    if (!response.ok) {
+        throw new Error("Failed to create movie");
+    }
+
+    return response.json();
+}
+
+export async function getUsers() {
+    const response = await fetch(`${API_URL}/users`);
+    if (!response.ok) {
+        throw new Error("Failed to fetch users");
+    }
+    return response.json();
 }
 
 export async function getWatchlist() {
-    const response = await fetch(watchlistUrl);
-    const data = await response.json();
-    return data;
+    const response = await fetch(`${API_URL}/watchlist`);
+    if (!response.ok) {
+        throw new Error("Failed to fetch watchlist");
+    }
+    return response.json();
 }
 
 export async function addToWatchlist(movie) {
@@ -39,63 +47,65 @@ export async function addToWatchlist(movie) {
             ? JSON.parse(storedUser)
             : null;
 
-    const existingResponse = await fetch(watchlistUrl);
-    const existingItems = await existingResponse.json();
-
-    const alreadyAdded = existingItems.some(
-        (item) =>
-            String(item.movieId) === String(movie.id) &&
-            String(item.userId) === String(user.id)
-    );
-
-    if (alreadyAdded) {
-        return null;
+    if (!user) {
+        throw new Error("No logged in user");
     }
 
-    const watchlistItem = {
-        movieId: movie.id,
-        userId: user.id,
-        title: movie.title,
-        genre: movie.genre,
-        year: movie.year,
-        imageUrl: movie.imageUrl,
-        description: movie.description,
-        rating: movie.rating,
-        watched: false
-    };
+    const existingResponse = await fetch(
+        `${API_URL}/watchlist?userId=${user.id}&movieId=${movie.id}`
+    );
+    const existingItems = await existingResponse.json();
 
-    const response = await fetch(watchlistUrl, {
+    if (existingItems.length > 0) {
+        return existingItems[0];
+    }
+
+    const response = await fetch(`${API_URL}/watchlist`, {
         method: "POST",
         headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
         },
-        body: JSON.stringify(watchlistItem)
+        body: JSON.stringify({
+            userId: user.id,
+            movieId: movie.id,
+            movie,
+        }),
     });
 
-    const data = await response.json();
-    return data;
+    if (!response.ok) {
+        throw new Error("Failed to add to watchlist");
+    }
+
+    return response.json();
 }
 
-export async function removeFromWatchlist(watchlistItemId) {
-    await fetch(`${watchlistUrl}/${watchlistItemId}`, {
-        method: "DELETE"
+export async function removeFromWatchlist(movieId) {
+    const storedUser = localStorage.getItem("user");
+    const user =
+        storedUser && storedUser !== "undefined"
+            ? JSON.parse(storedUser)
+            : null;
+
+    if (!user) {
+        throw new Error("No logged in user");
+    }
+
+    const existingResponse = await fetch(
+        `${API_URL}/watchlist?userId=${user.id}&movieId=${movieId}`
+    );
+    const existingItems = await existingResponse.json();
+
+    if (existingItems.length === 0) {
+        return;
+    }
+
+    const watchlistItemId = existingItems[0].id;
+
+    const response = await fetch(`${API_URL}/watchlist/${watchlistItemId}`, {
+        method: "DELETE",
     });
-}
 
-export async function markAsWatched(watchlistItem) {
-    const updatedMovie = {
-        ...watchlistItem,
-        watched: !watchlistItem.watched
-    };
-
-    const response = await fetch(`${watchlistUrl}/${watchlistItem.id}`, {
-        method: "PUT",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(updatedMovie)
-    });
-
-    const data = await response.json();
-    return data;
+    if (!response.ok) {
+        throw new Error("Failed to remove from watchlist");
+    }
 }
