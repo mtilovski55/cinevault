@@ -17,8 +17,10 @@ function Navbar() {
 
             <div className="nav-right">
                 <Link to="/movies">Movies</Link>
+
                 {user && <Link to="/watchlist">Watchlist</Link>}
                 {user && <Link to="/create">Add Movie</Link>}
+                {user && <Link to="/profile">Profile</Link>}  {/* ← ADD THIS */}
 
                 {user ? (
                     <>
