@@ -141,17 +141,6 @@
       "id": "xIG4gGkb7SU"
     }
   ],
-  "users": [
-    {
-      "email": "matejtilovski@gmail.com",
-      "password": "12345",
-      "id": "u-mfXQq8sLY"
-    },
-    {
-      "email": "even@gmail.com",
-      "password": "12345",
-      "id": "Rv4-aayfm0w"
-    }
-  ],
+  "users": [],
   "$schema": "./node_modules/json-server/schema.json"
 }
