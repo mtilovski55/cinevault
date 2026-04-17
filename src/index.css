@@ -444,23 +444,45 @@ button:disabled {
 
 .empty-state {
   width: 100%;
-  padding: 48px 24px;
+  padding: 50px 24px;
   border: 1px dashed #333;
   border-radius: 18px;
-  background-color: rgba(255, 255, 255, 0.02);
+  background: rgba(255, 255, 255, 0.02);
   text-align: center;
+  animation: fadeIn 0.3s ease;
+}
+
+.empty-icon {
+  font-size: 36px;
+  margin-bottom: 12px;
+  opacity: 0.8;
 }
 
 .empty-state h2 {
-  margin: 0 0 12px;
+  margin: 0 0 10px;
   font-size: 26px;
 }
 
 .empty-state p {
   margin: 0;
-  color: #9c9c9c;
+  color: #b3b3b3;
   font-size: 16px;
-  line-height: 1.6;
+}
+
+.empty-actions {
+  margin-top: 20px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .details-layout {

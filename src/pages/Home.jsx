@@ -45,18 +45,36 @@ function Home() {
 
             <div className="home-section">
                 <h2>Featured Movies</h2>
-                <p>Some picks from your current catalog.</p>
+                <p>
+                    {featuredMovies.length > 0
+                        ? "Some picks from your current catalog."
+                        : "Your featured section will appear here."}
+                </p>
 
                 <div className="movie-list">
-                    {featuredMovies.map((movie) => (
-                        <div key={movie.id} className="movie-card">
-                            <img src={movie.imageUrl} alt={movie.title} />
-                            <h3>{movie.title}</h3>
-                            <p>{movie.genre}</p>
-                            <p>{movie.year}</p>
-                            <Link to={`/movies/${movie.id}`}>Details</Link>
+                    {featuredMovies.length > 0 ? (
+                        featuredMovies.map((movie) => (
+                            <div key={movie.id} className="movie-card">
+                                <img src={movie.imageUrl} alt={movie.title} />
+                                <h3>{movie.title}</h3>
+                                <p>{movie.genre}</p>
+                                <p>{movie.year}</p>
+                                <Link to={`/movies/${movie.id}`}>Details</Link>
+                            </div>
+                        ))
+                    ) : (
+                        <div className="empty-state">
+                            <div className="empty-icon">🍿</div>
+                            <h2>No movies yet</h2>
+                            <p>Start building your collection by adding your first movie.</p>
+
+                            <div className="empty-actions">
+                                <Link to="/create" className="btn">
+                                    Add First Movie
+                                </Link>
+                            </div>
                         </div>
-                    ))}
+                    )}
                 </div>
             </div>
         </section>

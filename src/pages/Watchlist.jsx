@@ -62,8 +62,15 @@ function Watchlist() {
                     ))
                 ) : (
                     <div className="empty-state">
+                        <div className="empty-icon">⭐</div>
                         <h2>Your watchlist is empty</h2>
-                        <p>Start adding movies and build your personal collection.</p>
+                        <p>Add movies to watch later and they’ll show up here.</p>
+
+                        <div className="empty-actions">
+                            <Link to="/movies" className="btn">
+                                Browse Movies
+                            </Link>
+                        </div>
                     </div>
                 )}
             </div>

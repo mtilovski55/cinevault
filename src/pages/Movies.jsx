@@ -140,8 +140,19 @@ function Movies() {
                     ))
                 ) : (
                     <div className="empty-state">
+                        <div className="empty-icon">🎬</div>
                         <h2>No movies found</h2>
-                        <p>Try a different title or genre filter.</p>
+                        <p>Try a different title, genre, or clear your search.</p>
+
+                        <div className="empty-actions">
+                            <button className="btn-secondary" onClick={() => {
+                                setSearchTerm("");
+                                setSelectedGenre("All");
+                                setSortBy("default");
+                            }}>
+                                Reset Filters
+                            </button>
+                        </div>
                     </div>
                 )}
             </div>
