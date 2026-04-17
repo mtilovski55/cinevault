@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { getAllMovies } from "../services/movieService";
 import MovieCard from "../components/MovieCard";
+import { Search } from "lucide-react";
 
 function Movies() {
     const [movies, setMovies] = useState([]);
@@ -108,12 +109,22 @@ function Movies() {
                 </div>
 
                 <div className="search-bar">
+                    <Search className="search-icon" size={18} />
                     <input
                         type="text"
                         placeholder="Search movies by title..."
                         value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
                     />
+                    {searchTerm && (
+                        <button
+                            type="button"
+                            className="clear-search-btn"
+                            onClick={() => setSearchTerm("")}
+                        >
+                            ×
+                        </button>
+                    )}
                 </div>
             </div>
 
