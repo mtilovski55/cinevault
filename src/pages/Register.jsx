@@ -49,7 +49,10 @@ function Register() {
         }
 
         try {
-            await register(values.email, values.password);
+            await registerUser({
+                email: values.email,
+                password: values.password,
+            });
             navigate("/movies");
         } catch (error) {
             setServerError(error.message);

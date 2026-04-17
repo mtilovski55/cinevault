@@ -32,7 +32,7 @@ function Login() {
         }
 
         try {
-            const user = await loginUser(values.email, values.password);
+            const user = await loginUser(email, password);
 
             localStorage.setItem("user", JSON.stringify(user));
             navigate("/movies");
