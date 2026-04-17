@@ -109,3 +109,29 @@ export async function removeFromWatchlist(movieId) {
         throw new Error("Failed to remove from watchlist");
     }
 }
+
+export async function getOneMovie(id) {
+    const response = await fetch(`${API_URL}/movies/${id}`);
+
+    if (!response.ok) {
+        throw new Error("Failed to fetch movie");
+    }
+
+    return response.json();
+}
+
+export async function markAsWatched(movieId, watched) {
+    const response = await fetch(`${API_URL}/movies/${movieId}`, {
+        method: "PATCH",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ watched }),
+    });
+
+    if (!response.ok) {
+        throw new Error("Failed to update watched status");
+    }
+
+    return response.json();
+}
