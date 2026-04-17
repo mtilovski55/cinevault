@@ -32,7 +32,10 @@ function Login() {
         }
 
         try {
-            await loginUser(values.email.trim(), values.password.trim());
+            await loginUser(
+                values.email.trim().toLowerCase(),
+                values.password.trim()
+            );
             navigate("/movies");
         } catch (error) {
             localStorage.removeItem("user");
