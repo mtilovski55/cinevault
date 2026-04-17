@@ -27,10 +27,11 @@ A modern movie catalog web app built with React + Vite.
 🧪 Backend (JSON Server)
   npx json-server --watch db.json --port 3001
 
-<img width="2032" height="1095" alt="image" src="https://github.com/user-attachments/assets/7c81eca8-1b42-4b57-9457-238aa6518fc7" />
-<img width="2032" height="1095" alt="image" src="https://github.com/user-attachments/assets/abc8b8ca-f93f-472f-b6ea-9ad5525deb39" />
-<img width="2032" height="1095" alt="image" src="https://github.com/user-attachments/assets/fa5e73c2-e65e-4aaa-8d5a-bac6db9a666a" />
-<img width="2032" height="1095" alt="image" src="https://github.com/user-attachments/assets/74657f2e-03b6-4cdd-8cef-5c15372d53db" />
+<img width="2032" height="1095" alt="image" src="https://github.com/user-attachments/assets/aebce920-080f-46db-aa47-ee163284f0fc" />
+<img width="2032" height="1095" alt="image" src="https://github.com/user-attachments/assets/8b1fd260-6e92-47f5-9fd2-7d721a92dfa9" />
+<img width="2032" height="1095" alt="image" src="https://github.com/user-attachments/assets/946fb49b-5cc2-400f-9788-9107ca524817" />
+<img width="2032" height="1095" alt="image" src="https://github.com/user-attachments/assets/4a4ea660-95ac-46e0-952d-4c9faf8b5c55" />
+
 
 📌 Notes
 This project was built as part of a university course and demonstrates:
