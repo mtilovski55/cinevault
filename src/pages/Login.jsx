@@ -32,13 +32,11 @@ function Login() {
         }
 
         try {
-            const user = await loginUser(email, password);
-
-            localStorage.setItem("user", JSON.stringify(user));
+            await loginUser(values.email, values.password);
             navigate("/movies");
         } catch (error) {
             localStorage.removeItem("user");
-            setErrorMessage("Invalid email or password");
+            setErrorMessage(error.message || "Invalid email or password");
             setShakeTrigger((prev) => prev + 1);
         }
     };
