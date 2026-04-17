@@ -1,8 +1,11 @@
 const API_URL = "https://cinevault-x99x.onrender.com";
 
 export async function registerUser(userData) {
+    const email = userData.email.trim().toLowerCase();
+    const password = userData.password.trim();
+
     const existingResponse = await fetch(
-        `${API_URL}/users?email=${encodeURIComponent(userData.email)}`
+        `${API_URL}/users?email=${encodeURIComponent(email)}`
     );
     const existingUsers = await existingResponse.json();
 
@@ -16,8 +19,8 @@ export async function registerUser(userData) {
             "Content-Type": "application/json",
         },
         body: JSON.stringify({
-            email: userData.email,
-            password: userData.password,
+            email,
+            password,
         }),
     });
 
@@ -31,8 +34,11 @@ export async function registerUser(userData) {
 }
 
 export async function loginUser(email, password) {
+    const cleanEmail = email.trim().toLowerCase();
+    const cleanPassword = password.trim();
+
     const response = await fetch(
-        `${API_URL}/users?email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}`
+        `${API_URL}/users?email=${encodeURIComponent(cleanEmail)}`
     );
 
     if (!response.ok) {
@@ -46,6 +52,11 @@ export async function loginUser(email, password) {
     }
 
     const user = users[0];
+
+    if (user.password !== cleanPassword) {
+        throw new Error("Invalid email or password");
+    }
+
     localStorage.setItem("user", JSON.stringify(user));
     return user;
 }
