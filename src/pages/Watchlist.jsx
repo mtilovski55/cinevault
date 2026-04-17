@@ -43,6 +43,9 @@ function Watchlist() {
         <section className="page-container">
             <h1 className="section-title">My Watchlist</h1>
             <p className="section-subtitle">Movies you’ve saved to watch later.</p>
+            <p className="results-count">
+                {watchlistMovies.length} saved movie{watchlistMovies.length !== 1 ? "s" : ""}
+            </p>
 
             <div className="movie-list">
                 {watchlistMovies.length > 0 ? (

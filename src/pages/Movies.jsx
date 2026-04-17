@@ -41,6 +41,9 @@ function Movies() {
         <section className="page-container">
             <h1 className="section-title">Movie Catalog</h1>
             <p className="section-subtitle">Browse your collection of movies.</p>
+            <p className="results-count">
+                Showing {filteredMovies.length} movie{filteredMovies.length !== 1 ? "s" : ""}
+            </p>
 
             <div className="catalog-controls">
                 <div className="filter-bar">

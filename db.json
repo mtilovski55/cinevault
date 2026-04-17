@@ -118,6 +118,11 @@
       "email": "even@gmail.com",
       "password": "12345",
       "id": "Rv4-aayfm0w"
+    },
+    {
+      "email": "matejtilovski@gmail.com",
+      "password": "234",
+      "id": "O9xC26hd2hI"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
