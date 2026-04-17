@@ -37,7 +37,17 @@ export async function createMovie(movieData) {
 }
 
 export async function markAsWatched(movieId, watched) {
-    const response = await fetch(`${API_URL}/movies/${movieId}`, {
+    const storedUser = localStorage.getItem("user");
+    const user =
+        storedUser && storedUser !== "undefined"
+            ? JSON.parse(storedUser)
+            : null;
+
+    if (!user) {
+        throw new Error("No logged in user");
+    }
+
+    const movieResponse = await fetch(`${API_URL}/movies/${movieId}`, {
         method: "PATCH",
         headers: {
             "Content-Type": "application/json",
@@ -45,11 +55,44 @@ export async function markAsWatched(movieId, watched) {
         body: JSON.stringify({ watched }),
     });
 
-    if (!response.ok) {
+    if (!movieResponse.ok) {
         throw new Error("Failed to update watched status");
     }
 
-    return response.json();
+    const updatedMovie = await movieResponse.json();
+
+    const watchlistResponse = await fetch(
+        `${API_URL}/watchlist?userId=${user.id}&movieId=${movieId}`
+    );
+
+    if (!watchlistResponse.ok) {
+        throw new Error("Failed to find watchlist item");
+    }
+
+    const watchlistItems = await watchlistResponse.json();
+
+    if (watchlistItems.length > 0) {
+        const watchlistItem = watchlistItems[0];
+
+        const patchResponse = await fetch(`${API_URL}/watchlist/${watchlistItem.id}`, {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                movie: {
+                    ...watchlistItem.movie,
+                    watched,
+                },
+            }),
+        });
+
+        if (!patchResponse.ok) {
+            throw new Error("Failed to sync watchlist watched status");
+        }
+    }
+
+    return updatedMovie;
 }
 
 export async function getWatchlist() {
