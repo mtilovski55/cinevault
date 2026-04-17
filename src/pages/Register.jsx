@@ -1,94 +1,138 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { registerUser } from "../services/authService";
+import { useNavigate, Link } from "react-router-dom";
+import { register } from "../services/authService";
 
 function Register() {
     const navigate = useNavigate();
 
-    const [formValues, setFormValues] = useState({
+    const [values, setValues] = useState({
         email: "",
         password: "",
-        repeatPassword: ""
+        confirmPassword: ""
     });
 
+    const [errors, setErrors] = useState({});
+    const [serverError, setServerError] = useState("");
+    const [shakeTrigger, setShakeTrigger] = useState(0);
+
     const changeHandler = (e) => {
-        setFormValues((state) => ({
+        setValues((state) => ({
             ...state,
             [e.target.name]: e.target.value
         }));
+
+        setErrors((state) => ({
+            ...state,
+            [e.target.name]: ""
+        }));
+
+        setServerError("");
     };
 
     const submitHandler = async (e) => {
         e.preventDefault();
 
-        if (
-            !formValues.email ||
-            !formValues.password ||
-            !formValues.repeatPassword
-        ) {
-            alert("All fields are required.");
+        const newErrors = {};
+
+        if (!values.email) newErrors.email = "Email is required";
+        if (!values.password) newErrors.password = "Password is required";
+        if (!values.confirmPassword) newErrors.confirmPassword = "Confirm your password";
+
+        if (values.password !== values.confirmPassword) {
+            newErrors.confirmPassword = "Passwords do not match";
+        }
+
+        if (Object.keys(newErrors).length > 0) {
+            setErrors(newErrors);
+            setShakeTrigger((prev) => prev + 1);
             return;
         }
 
-        if (formValues.password !== formValues.repeatPassword) {
-            alert("Passwords do not match.");
-            return;
+        try {
+            await register(values.email, values.password);
+            navigate("/movies");
+        } catch (error) {
+            setServerError(error.message);
+            setShakeTrigger((prev) => prev + 1);
         }
+    };
 
-        const newUser = {
-            email: formValues.email,
-            password: formValues.password
-        };
-
-        await registerUser(newUser);
-
-        navigate("/login");
+    const getInputClass = (field) => {
+        return `${errors[field] ? "input-error shake" : ""}`;
     };
 
     return (
         <section className="form-wrapper">
             <div className="form-card">
-                <h1>Create Account</h1>
-                <p>Join CineVault and start building your movie world.</p>
+                <h1>Register</h1>
+                <p>Create your CineVault account.</p>
 
                 <form onSubmit={submitHandler}>
                     <div className="form-group">
-                        <label htmlFor="email">Email</label>
+                        <label>Email</label>
                         <input
+                            key={`email-${shakeTrigger}`}
                             type="email"
-                            id="email"
                             name="email"
-                            placeholder="Enter your email"
-                            value={formValues.email}
+                            placeholder="Enter email"
+                            value={values.email}
                             onChange={changeHandler}
+                            className={getInputClass("email")}
                         />
+                        {errors.email && (
+                            <div className="field-error">
+                                <span className="field-error-icon">!</span>
+                                <span>{errors.email}</span>
+                            </div>
+                        )}
                     </div>
 
                     <div className="form-group">
-                        <label htmlFor="password">Password</label>
+                        <label>Password</label>
                         <input
+                            key={`password-${shakeTrigger}`}
                             type="password"
-                            id="password"
                             name="password"
-                            placeholder="Create a password"
-                            value={formValues.password}
+                            placeholder="Enter password"
+                            value={values.password}
                             onChange={changeHandler}
+                            className={getInputClass("password")}
                         />
+                        {errors.password && (
+                            <div className="field-error">
+                                <span className="field-error-icon">!</span>
+                                <span>{errors.password}</span>
+                            </div>
+                        )}
                     </div>
 
                     <div className="form-group">
-                        <label htmlFor="repeatPassword">Repeat Password</label>
+                        <label>Confirm Password</label>
                         <input
+                            key={`confirm-${shakeTrigger}`}
                             type="password"
-                            id="repeatPassword"
-                            name="repeatPassword"
-                            placeholder="Repeat your password"
-                            value={formValues.repeatPassword}
+                            name="confirmPassword"
+                            placeholder="Confirm password"
+                            value={values.confirmPassword}
                             onChange={changeHandler}
+                            className={getInputClass("confirmPassword")}
                         />
+                        {errors.confirmPassword && (
+                            <div className="field-error">
+                                <span className="field-error-icon">!</span>
+                                <span>{errors.confirmPassword}</span>
+                            </div>
+                        )}
                     </div>
 
-                    <button type="submit" className="btn">Register</button>
+                    {serverError && (
+                        <div className="field-error">
+                            <span className="field-error-icon">!</span>
+                            <span>{serverError}</span>
+                        </div>
+                    )}
+
+                    <button className="btn">Register</button>
                 </form>
 
                 <p className="form-switch">

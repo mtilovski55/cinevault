@@ -1,17 +1,29 @@
 const baseUrl = "http://localhost:3001/users";
 
-export async function registerUser(userData) {
-    const response = await fetch(baseUrl, {
+export const register = async (email, password) => {
+    const res = await fetch("http://localhost:3030/users");
+    const users = await res.json();
+
+    const existingUser = users.find(
+        (user) => user.email.toLowerCase() === email.toLowerCase()
+    );
+
+    if (existingUser) {
+        throw new Error("Email is already registered");
+    }
+
+    const createRes = await fetch("http://localhost:3030/users", {
         method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(userData)
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
     });
 
-    const data = await response.json();
-    return data;
-}
+    const newUser = await createRes.json();
+
+    localStorage.setItem("user", JSON.stringify(newUser));
+
+    return newUser;
+};
 
 export async function loginUser(email, password) {
     const response = await fetch(baseUrl);
