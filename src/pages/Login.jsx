@@ -59,6 +59,7 @@ function Login() {
                             key={`email-${shakeTrigger}`}
                             type="email"
                             name="email"
+                            autoComplete="email"
                             placeholder="Enter email"
                             value={values.email}
                             onChange={changeHandler}
@@ -72,6 +73,7 @@ function Login() {
                             key={`password-${shakeTrigger}`}
                             type="password"
                             name="password"
+                            autoComplete="current-password"
                             placeholder="Enter password"
                             value={values.password}
                             onChange={changeHandler}

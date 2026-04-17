@@ -1,42 +1,22 @@
 const API_URL = "https://cinevault-x99x.onrender.com";
 
-export async function getAllMovies() {
-    const response = await fetch(`${API_URL}/movies`);
-    if (!response.ok) {
-        throw new Error("Failed to fetch movies");
-    }
-    return response.json();
-}
-
-export async function createMovie(movieData) {
-    const response = await fetch(`${API_URL}/movies`, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify(movieData),
-    });
-
-    if (!response.ok) {
-        throw new Error("Failed to create movie");
-    }
-
-    return response.json();
-}
-
-export async function getUsers() {
-    const response = await fetch(`${API_URL}/users`);
-    if (!response.ok) {
-        throw new Error("Failed to fetch users");
-    }
-    return response.json();
-}
-
 export async function getWatchlist() {
-    const response = await fetch(`${API_URL}/watchlist`);
+    const storedUser = localStorage.getItem("user");
+    const user =
+        storedUser && storedUser !== "undefined"
+            ? JSON.parse(storedUser)
+            : null;
+
+    if (!user) {
+        throw new Error("No logged in user");
+    }
+
+    const response = await fetch(`${API_URL}/watchlist?userId=${user.id}`);
+
     if (!response.ok) {
         throw new Error("Failed to fetch watchlist");
     }
+
     return response.json();
 }
 
@@ -108,30 +88,4 @@ export async function removeFromWatchlist(movieId) {
     if (!response.ok) {
         throw new Error("Failed to remove from watchlist");
     }
-}
-
-export async function getOneMovie(id) {
-    const response = await fetch(`${API_URL}/movies/${id}`);
-
-    if (!response.ok) {
-        throw new Error("Failed to fetch movie");
-    }
-
-    return response.json();
-}
-
-export async function markAsWatched(movieId, watched) {
-    const response = await fetch(`${API_URL}/movies/${movieId}`, {
-        method: "PATCH",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ watched }),
-    });
-
-    if (!response.ok) {
-        throw new Error("Failed to update watched status");
-    }
-
-    return response.json();
 }

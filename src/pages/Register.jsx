@@ -77,6 +77,7 @@ function Register() {
                             key={`email-${shakeTrigger}`}
                             type="email"
                             name="email"
+                            autoComplete="email"
                             placeholder="Enter email"
                             value={values.email}
                             onChange={changeHandler}
@@ -96,6 +97,7 @@ function Register() {
                             key={`password-${shakeTrigger}`}
                             type="password"
                             name="password"
+                            autoComplete="new-password"
                             placeholder="Enter password"
                             value={values.password}
                             onChange={changeHandler}
@@ -115,6 +117,7 @@ function Register() {
                             key={`confirm-${shakeTrigger}`}
                             type="password"
                             name="confirmPassword"
+                            autoComplete="new-password"
                             placeholder="Confirm password"
                             value={values.confirmPassword}
                             onChange={changeHandler}
