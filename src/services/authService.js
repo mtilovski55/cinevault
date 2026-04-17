@@ -1,8 +1,8 @@
 const baseUrl = "http://localhost:3001/users";
 
-export const register = async (email, password) => {
-    const res = await fetch("http://localhost:3030/users");
-    const users = await res.json();
+export async function registerUser(email, password) {
+    const response = await fetch(baseUrl);
+    const users = await response.json();
 
     const existingUser = users.find(
         (user) => user.email.toLowerCase() === email.toLowerCase()
@@ -12,27 +12,31 @@ export const register = async (email, password) => {
         throw new Error("Email is already registered");
     }
 
-    const createRes = await fetch("http://localhost:3030/users", {
+    const createResponse = await fetch(baseUrl, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password }),
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ email, password })
     });
 
-    const newUser = await createRes.json();
-
-    localStorage.setItem("user", JSON.stringify(newUser));
-
+    const newUser = await createResponse.json();
     return newUser;
-};
+}
 
 export async function loginUser(email, password) {
     const response = await fetch(baseUrl);
-    const data = await response.json();
+    const users = await response.json();
 
-    const user = data.find(
-        (currentUser) =>
-            currentUser.email === email && currentUser.password === password
+    const user = users.find(
+        (user) =>
+            user.email.toLowerCase() === email.toLowerCase() &&
+            user.password === password
     );
+
+    if (!user) {
+        throw new Error("Invalid email or password");
+    }
 
     return user;
 }

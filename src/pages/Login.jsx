@@ -1,40 +1,49 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { loginUser } from "../services/authService";
 
 function Login() {
     const navigate = useNavigate();
 
-    const [formValues, setFormValues] = useState({
+    const [values, setValues] = useState({
         email: "",
         password: ""
     });
 
+    const [errorMessage, setErrorMessage] = useState("");
+    const [shakeTrigger, setShakeTrigger] = useState(0);
+
     const changeHandler = (e) => {
-        setFormValues((state) => ({
+        setValues((state) => ({
             ...state,
             [e.target.name]: e.target.value
         }));
+
+        setErrorMessage("");
     };
 
     const submitHandler = async (e) => {
         e.preventDefault();
 
-        if (!formValues.email || !formValues.password) {
-            alert("All fields are required.");
+        if (!values.email || !values.password) {
+            setErrorMessage("All fields are required");
+            setShakeTrigger((prev) => prev + 1);
             return;
         }
 
-        const user = await loginUser(formValues.email, formValues.password);
+        try {
+            const user = await loginUser(values.email, values.password);
 
-        if (!user) {
-            alert("Invalid email or password.");
-            return;
+            localStorage.setItem("user", JSON.stringify(user));
+            navigate("/movies");
+        } catch (error) {
+            localStorage.removeItem("user");
+            setErrorMessage("Invalid email or password");
+            setShakeTrigger((prev) => prev + 1);
         }
-
-        localStorage.setItem("user", JSON.stringify(user));
-        navigate("/");
     };
+
+    const inputClass = errorMessage ? "input-error shake" : "";
 
     return (
         <section className="form-wrapper">
@@ -44,30 +53,39 @@ function Login() {
 
                 <form onSubmit={submitHandler}>
                     <div className="form-group">
-                        <label htmlFor="email">Email</label>
+                        <label>Email</label>
                         <input
+                            key={`email-${shakeTrigger}`}
                             type="email"
-                            id="email"
                             name="email"
-                            placeholder="Enter your email"
-                            value={formValues.email}
+                            placeholder="Enter email"
+                            value={values.email}
                             onChange={changeHandler}
+                            className={inputClass}
                         />
                     </div>
 
                     <div className="form-group">
-                        <label htmlFor="password">Password</label>
+                        <label>Password</label>
                         <input
+                            key={`password-${shakeTrigger}`}
                             type="password"
-                            id="password"
                             name="password"
-                            placeholder="Enter your password"
-                            value={formValues.password}
+                            placeholder="Enter password"
+                            value={values.password}
                             onChange={changeHandler}
+                            className={inputClass}
                         />
                     </div>
 
-                    <button type="submit" className="btn">Login</button>
+                    {errorMessage && (
+                        <div className="field-error">
+                            <span className="field-error-icon">!</span>
+                            <span>{errorMessage}</span>
+                        </div>
+                    )}
+
+                    <button className="btn">Login</button>
                 </form>
 
                 <p className="form-switch">

@@ -33,7 +33,11 @@ export async function getWatchlist() {
 }
 
 export async function addToWatchlist(movie) {
-    const user = JSON.parse(localStorage.getItem("user"));
+    const storedUser = localStorage.getItem("user");
+    const user =
+        storedUser && storedUser !== "undefined"
+            ? JSON.parse(storedUser)
+            : null;
 
     const existingResponse = await fetch(watchlistUrl);
     const existingItems = await existingResponse.json();

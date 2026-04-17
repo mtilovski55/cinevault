@@ -4,7 +4,11 @@ import { getAllMovies, getWatchlist } from "../services/movieService";
 
 function Profile() {
     const navigate = useNavigate();
-    const user = JSON.parse(localStorage.getItem("user"));
+    const storedUser = localStorage.getItem("user");
+    const user =
+        storedUser && storedUser !== "undefined"
+            ? JSON.parse(storedUser)
+            : null;
 
     const [movieCount, setMovieCount] = useState(0);
     const [watchlistCount, setWatchlistCount] = useState(0);

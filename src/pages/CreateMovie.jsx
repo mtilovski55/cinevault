@@ -4,7 +4,11 @@ import { createMovie } from "../services/movieService";
 
 function CreateMovie() {
     const navigate = useNavigate();
-    const user = JSON.parse(localStorage.getItem("user"));
+    const storedUser = localStorage.getItem("user");
+    const user =
+        storedUser && storedUser !== "undefined"
+            ? JSON.parse(storedUser)
+            : null;
 
     const [formValues, setFormValues] = useState({
         title: "",

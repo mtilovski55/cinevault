@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { getWatchlist } from "../services/movieService";
 import MovieCard from "../components/MovieCard";
 
@@ -8,7 +8,11 @@ function Watchlist() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        const user = JSON.parse(localStorage.getItem("user"));
+        const storedUser = localStorage.getItem("user");
+        const user =
+            storedUser && storedUser !== "undefined"
+                ? JSON.parse(storedUser)
+                : null;
 
         if (!user) {
             navigate("/login");
