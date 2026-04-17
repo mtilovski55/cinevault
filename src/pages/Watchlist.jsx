@@ -21,24 +21,23 @@ function Watchlist() {
 
         getWatchlist()
             .then((result) => {
-                const userMovies = result.filter(
-                    (movie) => String(movie.userId) === String(user.id)
-                );
-                setWatchlistMovies(userMovies);
+                setWatchlistMovies(result);
             })
             .catch((error) => console.log(error));
     }, [navigate]);
 
     const removeMovieHandler = (movieId) => {
         setWatchlistMovies((state) =>
-            state.filter((movie) => movie.id !== movieId)
+            state.filter((item) => String(item.movieId) !== String(movieId))
         );
     };
 
     const watchedToggleHandler = (updatedMovie) => {
         setWatchlistMovies((state) =>
-            state.map((movie) =>
-                movie.id === updatedMovie.id ? updatedMovie : movie
+            state.map((item) =>
+                String(item.movieId) === String(updatedMovie.id)
+                    ? { ...item, movie: updatedMovie }
+                    : item
             )
         );
     };
@@ -53,10 +52,10 @@ function Watchlist() {
 
             <div className="movie-list">
                 {watchlistMovies.length > 0 ? (
-                    watchlistMovies.map((movie) => (
+                    watchlistMovies.map((item) => (
                         <MovieCard
-                            key={movie.id}
-                            movie={movie}
+                            key={item.id}
+                            movie={item.movie}
                             showWatchlistButton={false}
                             showRemoveButton={true}
                             showWatchedButton={true}

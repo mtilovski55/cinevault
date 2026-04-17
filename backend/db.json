@@ -93,42 +93,6 @@
       "id": "eKaedzDhFAM"
     },
     {
-      "movieId": "RnH9iMUsiog",
-      "userId": "Rv4-aayfm0w",
-      "title": "Spider-Man: No Way Home",
-      "genre": "Action, Sci-Fi",
-      "year": 2021,
-      "imageUrl": "https://m.media-amazon.com/images/M/MV5BMmFiZGZjMmEtMTA0Ni00MzA2LTljMTYtZGI2MGJmZWYzZTQ2XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
-      "description": "Spider-Man seeks the help of Doctor Strange to forget his exposed secret identity as Peter Parker. However, Strange's spell goes horribly wrong, leading to unwanted guests entering their universe.",
-      "rating": 8,
-      "watched": true,
-      "id": "6ef1AMmiKe8"
-    },
-    {
-      "movieId": "UpdC_I8TCuc",
-      "userId": "Rv4-aayfm0w",
-      "title": "Infinity War",
-      "genre": "Action",
-      "year": 2018,
-      "imageUrl": "https://m.media-amazon.com/images/M/MV5BMjMxNjY2MDU1OV5BMl5BanBnXkFtZTgwNzY1MTUwNTM@._V1_.jpg",
-      "description": "As Thanos sets about his quest for finding the infinity stones and carrying out his twisted scheme, the Avengers join forces with their allies to stop him from causing chaos and destruction.",
-      "rating": 9,
-      "watched": false,
-      "id": "HqKC9zuEeLg"
-    },
-    {
-      "movieId": "hlteYiFi1RU",
-      "userId": "Rv4-aayfm0w",
-      "title": "Endgame",
-      "genre": "Sci-Fi",
-      "year": 2019,
-      "imageUrl": "https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_FMjpg_UX1000_.jpg",
-      "description": "After Thanos, an intergalactic warlord, disintegrates half of the universe, the Avengers must reunite and assemble again to reinvigorate their trounced allies and restore balance.",
-      "rating": 9,
-      "watched": false,
-      "id": "UjSEbLfMILY"
-    },
-    {
       "movieId": "x51Ocj3xyxs",
       "userId": "Rv4-aayfm0w",
       "title": "Conjuring 2",
