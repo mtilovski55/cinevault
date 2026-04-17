@@ -49,9 +49,9 @@ function Register() {
         }
 
         try {
-            await register({
+            await registerUser({
                 email: values.email.trim().toLowerCase(),
-                password: values.password.trim()
+                password: values.password.trim(),
             });
             navigate("/movies");
         } catch (error) {
