@@ -1,132 +1,163 @@
 {
-    "movies": [
-        {
-            "id": "1",
-            "title": "Interstellar",
-            "genre": "Sci-Fi",
-            "year": 2014,
-            "imageUrl": "https://image.tmdb.org/t/p/w500/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg",
-            "description": "A team of explorers travels through a wormhole in space in an attempt to ensure humanity's survival.",
-            "rating": 9
-        },
-        {
-            "id": "2",
-            "title": "The Dark Knight",
-            "genre": "Action",
-            "year": 2008,
-            "imageUrl": "https://image.tmdb.org/t/p/w500/qJ2tW6WMUDux911r6m7haRef0WH.jpg",
-            "description": "Batman faces the Joker, a criminal mastermind who wants to plunge Gotham City into chaos.",
-            "rating": 9
-        },
-        {
-            "title": "Infinity War",
-            "genre": "Action",
-            "year": 2018,
-            "imageUrl": "https://m.media-amazon.com/images/M/MV5BMjMxNjY2MDU1OV5BMl5BanBnXkFtZTgwNzY1MTUwNTM@._V1_.jpg",
-            "description": "As Thanos sets about his quest for finding the infinity stones and carrying out his twisted scheme, the Avengers join forces with their allies to stop him from causing chaos and destruction.",
-            "rating": 9,
-            "id": "UpdC_I8TCuc"
-        },
-        {
-            "title": "Endgame",
-            "genre": "Sci-Fi",
-            "year": 2019,
-            "imageUrl": "https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_FMjpg_UX1000_.jpg",
-            "description": "After Thanos, an intergalactic warlord, disintegrates half of the universe, the Avengers must reunite and assemble again to reinvigorate their trounced allies and restore balance.",
-            "rating": 9,
-            "id": "hlteYiFi1RU"
-        },
-        {
-            "title": "Spider-Man: No Way Home",
-            "genre": "Action, Sci-Fi",
-            "year": 2021,
-            "imageUrl": "https://m.media-amazon.com/images/M/MV5BMmFiZGZjMmEtMTA0Ni00MzA2LTljMTYtZGI2MGJmZWYzZTQ2XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
-            "description": "Spider-Man seeks the help of Doctor Strange to forget his exposed secret identity as Peter Parker. However, Strange's spell goes horribly wrong, leading to unwanted guests entering their universe.",
-            "rating": 8,
-            "id": "RnH9iMUsiog"
-        },
-        {
-            "title": "Conjuring 2",
-            "genre": "Horror, Mistery",
-            "year": 2014,
-            "imageUrl": "https://m.media-amazon.com/images/M/MV5BOTRkMDlmZWEtMzQyYy00YzgyLTgwM2QtNzgxYmIwNGVlYmJlXkEyXkFqcGc@._V1_.jpg",
-            "description": "Peggy, a single mother of four children, seeks the help of occult investigators Ed and Lorraine Warren when she and her children witness strange, paranormal events in their house.",
-            "rating": 7,
-            "id": "x51Ocj3xyxs"
-        }
-    ],
-    "watchlist": [
-        {
-            "movieId": "UpdC_I8TCuc",
-            "userId": "u-mfXQq8sLY",
-            "title": "Infinity War",
-            "genre": "Action",
-            "year": 2018,
-            "imageUrl": "https://m.media-amazon.com/images/M/MV5BMjMxNjY2MDU1OV5BMl5BanBnXkFtZTgwNzY1MTUwNTM@._V1_.jpg",
-            "description": "As Thanos sets about his quest for finding the infinity stones and carrying out his twisted scheme, the Avengers join forces with their allies to stop him from causing chaos and destruction.",
-            "rating": 9,
-            "watched": true,
-            "id": "G2qaarTOQeM"
-        },
-        {
-            "movieId": "hlteYiFi1RU",
-            "userId": "u-mfXQq8sLY",
-            "title": "Endgame",
-            "genre": "Sci-Fi",
-            "year": 2019,
-            "imageUrl": "https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_FMjpg_UX1000_.jpg",
-            "description": "After Thanos, an intergalactic warlord, disintegrates half of the universe, the Avengers must reunite and assemble again to reinvigorate their trounced allies and restore balance.",
-            "rating": 9,
-            "watched": true,
-            "id": "cLNIzp0yIjE"
-        },
-        {
-            "movieId": "2",
-            "userId": "Rv4-aayfm0w",
-            "title": "The Dark Knight",
-            "genre": "Action",
-            "year": 2008,
-            "imageUrl": "https://image.tmdb.org/t/p/w500/qJ2tW6WMUDux911r6m7haRef0WH.jpg",
-            "description": "Batman faces the Joker, a criminal mastermind who wants to plunge Gotham City into chaos.",
-            "rating": 9,
-            "watched": false,
-            "id": "ay5qH71No30"
-        },
-        {
-            "movieId": "1",
-            "userId": "Rv4-aayfm0w",
-            "title": "Interstellar",
-            "genre": "Sci-Fi",
-            "year": 2014,
-            "imageUrl": "https://image.tmdb.org/t/p/w500/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg",
-            "description": "A team of explorers travels through a wormhole in space in an attempt to ensure humanity's survival.",
-            "rating": 9,
-            "watched": false,
-            "id": "-VmLmYHpALw"
-        },
-        {
-            "movieId": "RnH9iMUsiog",
-            "userId": "u-mfXQq8sLY",
-            "title": "Spider-Man: No Way Home",
-            "genre": "Action, Sci-Fi",
-            "year": 2021,
-            "imageUrl": "https://m.media-amazon.com/images/M/MV5BMmFiZGZjMmEtMTA0Ni00MzA2LTljMTYtZGI2MGJmZWYzZTQ2XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
-            "description": "Spider-Man seeks the help of Doctor Strange to forget his exposed secret identity as Peter Parker. However, Strange's spell goes horribly wrong, leading to unwanted guests entering their universe.",
-            "rating": 8,
-            "watched": true,
-            "id": "eKaedzDhFAM"
-        }
-    ],
-    "users": [
-        {
-            "email": "matejtilovski@gmail.com",
-            "password": "12345",
-            "id": "u-mfXQq8sLY"
-        },
-        {
-            "email": "even@gmail.com",
-            "password": "12345",
-            "id": "Rv4-aayfm0w"
-        }
-    ]
+  "movies": [
+    {
+      "id": "1",
+      "title": "Interstellar",
+      "genre": "Sci-Fi",
+      "year": 2014,
+      "imageUrl": "https://image.tmdb.org/t/p/w500/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg",
+      "description": "A team of explorers travels through a wormhole in space in an attempt to ensure humanity's survival.",
+      "rating": 9
+    },
+    {
+      "id": "2",
+      "title": "The Dark Knight",
+      "genre": "Action",
+      "year": 2008,
+      "imageUrl": "https://image.tmdb.org/t/p/w500/qJ2tW6WMUDux911r6m7haRef0WH.jpg",
+      "description": "Batman faces the Joker, a criminal mastermind who wants to plunge Gotham City into chaos.",
+      "rating": 9
+    },
+    {
+      "title": "Infinity War",
+      "genre": "Action",
+      "year": 2018,
+      "imageUrl": "https://m.media-amazon.com/images/M/MV5BMjMxNjY2MDU1OV5BMl5BanBnXkFtZTgwNzY1MTUwNTM@._V1_.jpg",
+      "description": "As Thanos sets about his quest for finding the infinity stones and carrying out his twisted scheme, the Avengers join forces with their allies to stop him from causing chaos and destruction.",
+      "rating": 9,
+      "id": "UpdC_I8TCuc"
+    },
+    {
+      "title": "Endgame",
+      "genre": "Sci-Fi",
+      "year": 2019,
+      "imageUrl": "https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_FMjpg_UX1000_.jpg",
+      "description": "After Thanos, an intergalactic warlord, disintegrates half of the universe, the Avengers must reunite and assemble again to reinvigorate their trounced allies and restore balance.",
+      "rating": 9,
+      "id": "hlteYiFi1RU"
+    },
+    {
+      "title": "Spider-Man: No Way Home",
+      "genre": "Action, Sci-Fi",
+      "year": 2021,
+      "imageUrl": "https://m.media-amazon.com/images/M/MV5BMmFiZGZjMmEtMTA0Ni00MzA2LTljMTYtZGI2MGJmZWYzZTQ2XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+      "description": "Spider-Man seeks the help of Doctor Strange to forget his exposed secret identity as Peter Parker. However, Strange's spell goes horribly wrong, leading to unwanted guests entering their universe.",
+      "rating": 8,
+      "id": "RnH9iMUsiog"
+    },
+    {
+      "title": "Conjuring 2",
+      "genre": "Horror, Mistery",
+      "year": 2014,
+      "imageUrl": "https://m.media-amazon.com/images/M/MV5BOTRkMDlmZWEtMzQyYy00YzgyLTgwM2QtNzgxYmIwNGVlYmJlXkEyXkFqcGc@._V1_.jpg",
+      "description": "Peggy, a single mother of four children, seeks the help of occult investigators Ed and Lorraine Warren when she and her children witness strange, paranormal events in their house.",
+      "rating": 7,
+      "id": "x51Ocj3xyxs"
+    },
+    {
+      "title": "Furious 7",
+      "genre": "Action, Thriller",
+      "year": 2015,
+      "imageUrl": "https://i.ebayimg.com/images/g/uTwAAOSwu4BVjaL8/s-l1200.jpg",
+      "description": "Dominic and his family are caught in a quagmire when Shaw's brother seeks bloody revenge. They must not only deal with their enemy but also save a crucial programme from falling into the wrong hands.",
+      "rating": 7,
+      "id": "6CA3qdwo6Bg"
+    },
+    {
+      "title": "Top Gun",
+      "genre": "Action, Adventure",
+      "year": 1986,
+      "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcReWo_SY7w0Y_nZbyefZQ-fmniFpTp-2eaifw_YL_SFtN2fUuylhu2fDwdvi-mhEGoUHHlQkQ&s=10",
+      "description": "After losing his friend, top pilot Maverick is given a second chance to redeem himself. He struggles to be at his best and also gets romantically involved with his civilian instructor, Charlie.",
+      "rating": 7,
+      "id": "9v8dwFy879I"
+    }
+  ],
+  "watchlist": [
+    {
+      "movieId": "UpdC_I8TCuc",
+      "userId": "u-mfXQq8sLY",
+      "title": "Infinity War",
+      "genre": "Action",
+      "year": 2018,
+      "imageUrl": "https://m.media-amazon.com/images/M/MV5BMjMxNjY2MDU1OV5BMl5BanBnXkFtZTgwNzY1MTUwNTM@._V1_.jpg",
+      "description": "As Thanos sets about his quest for finding the infinity stones and carrying out his twisted scheme, the Avengers join forces with their allies to stop him from causing chaos and destruction.",
+      "rating": 9,
+      "watched": true,
+      "id": "G2qaarTOQeM"
+    },
+    {
+      "movieId": "hlteYiFi1RU",
+      "userId": "u-mfXQq8sLY",
+      "title": "Endgame",
+      "genre": "Sci-Fi",
+      "year": 2019,
+      "imageUrl": "https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_FMjpg_UX1000_.jpg",
+      "description": "After Thanos, an intergalactic warlord, disintegrates half of the universe, the Avengers must reunite and assemble again to reinvigorate their trounced allies and restore balance.",
+      "rating": 9,
+      "watched": true,
+      "id": "cLNIzp0yIjE"
+    },
+    {
+      "movieId": "UpdC_I8TCuc",
+      "userId": "Rv4-aayfm0w",
+      "title": "Infinity War",
+      "genre": "Action",
+      "year": 2018,
+      "imageUrl": "https://m.media-amazon.com/images/M/MV5BMjMxNjY2MDU1OV5BMl5BanBnXkFtZTgwNzY1MTUwNTM@._V1_.jpg",
+      "description": "As Thanos sets about his quest for finding the infinity stones and carrying out his twisted scheme, the Avengers join forces with their allies to stop him from causing chaos and destruction.",
+      "rating": 9,
+      "watched": true,
+      "id": "6w5ASJuGujE"
+    },
+    {
+      "movieId": "hlteYiFi1RU",
+      "userId": "Rv4-aayfm0w",
+      "title": "Endgame",
+      "genre": "Sci-Fi",
+      "year": 2019,
+      "imageUrl": "https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_FMjpg_UX1000_.jpg",
+      "description": "After Thanos, an intergalactic warlord, disintegrates half of the universe, the Avengers must reunite and assemble again to reinvigorate their trounced allies and restore balance.",
+      "rating": 9,
+      "watched": true,
+      "id": "vYKxFnRmG0M"
+    },
+    {
+      "movieId": "RnH9iMUsiog",
+      "userId": "Rv4-aayfm0w",
+      "title": "Spider-Man: No Way Home",
+      "genre": "Action, Sci-Fi",
+      "year": 2021,
+      "imageUrl": "https://m.media-amazon.com/images/M/MV5BMmFiZGZjMmEtMTA0Ni00MzA2LTljMTYtZGI2MGJmZWYzZTQ2XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+      "description": "Spider-Man seeks the help of Doctor Strange to forget his exposed secret identity as Peter Parker. However, Strange's spell goes horribly wrong, leading to unwanted guests entering their universe.",
+      "rating": 8,
+      "watched": false,
+      "id": "hm4djtrHDog"
+    },
+    {
+      "movieId": "6CA3qdwo6Bg",
+      "userId": "u-mfXQq8sLY",
+      "title": "Furious 7",
+      "genre": "Action, Thriller",
+      "year": 2015,
+      "imageUrl": "https://i.ebayimg.com/images/g/uTwAAOSwu4BVjaL8/s-l1200.jpg",
+      "description": "Dominic and his family are caught in a quagmire when Shaw's brother seeks bloody revenge. They must not only deal with their enemy but also save a crucial programme from falling into the wrong hands.",
+      "rating": 7,
+      "watched": false,
+      "id": "9qwzUR97mTM"
+    }
+  ],
+  "users": [
+    {
+      "email": "matejtilovski@gmail.com",
+      "password": "12345",
+      "id": "u-mfXQq8sLY"
+    },
+    {
+      "email": "even@gmail.com",
+      "password": "12345",
+      "id": "Rv4-aayfm0w"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }

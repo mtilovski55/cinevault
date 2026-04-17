@@ -1,7 +1,12 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background: linear-gradient(to bottom, #0b0b0b, #151515);
+
+  background:
+    radial-gradient(circle at 20% 0%, rgba(229, 9, 20, 0.12), transparent 40%),
+    radial-gradient(circle at 80% 20%, rgba(229, 9, 20, 0.08), transparent 50%),
+    linear-gradient(to bottom, #0b0b0b, #151515);
+
   color: white;
   min-height: 100vh;
 }
@@ -11,15 +16,38 @@ a {
 }
 
 nav {
-  background-color: rgba(10, 10, 10, 0.95);
+  background:
+    linear-gradient(to right, rgba(229, 9, 20, 0.08), transparent 40%),
+    rgba(10, 10, 10, 0.85);
+
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
   padding: 20px 40px;
   display: flex;
   align-items: center;
-  gap: 24px;
-  border-bottom: 1px solid #222;
+  justify-content: space-between;
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+
   position: sticky;
   top: 0;
   z-index: 1000;
+}
+
+nav::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom,
+      rgba(229, 9, 20, 0.15),
+      transparent);
+  pointer-events: none;
+}
+
+.logo {
+  color: #e50914;
+  text-shadow: 0 0 8px rgba(229, 9, 20, 0.5);
 }
 
 nav a {
